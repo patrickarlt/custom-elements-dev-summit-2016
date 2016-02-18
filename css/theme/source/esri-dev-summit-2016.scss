@@ -30,6 +30,11 @@ $linkColorHover: lighten( $linkColor, 20% );
 $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
 $mainFontSize: 32px;
 
+$heading1Size: 2.074em;
+$heading2Size: 1.728em;
+$heading3Size: 1.44em;
+$heading4Size: 1.00em;
+
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
