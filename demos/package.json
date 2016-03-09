@@ -1,0 +1,19 @@
+{
+  "name": "demos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:esri-map": "rollup -c rollup-config.js -i components/esri-map.js -o dist/esri-map.js -m inline -n EsriMap",
+    "build:esri-feature-layer": "rollup -c rollup-config.js -i components/esri-feature-layer.js -o dist/esri-feature-layer.js -m inline -n EsriFeatureLayer",
+    "build:esri-basemap-toggle": "rollup -c rollup-config.js -i components/esri-basemap-toggle.js -o dist/esri-basemap-toggle.js -m inline -n EsriBasemapToggle",
+    "build": "npm run build:esri-map & npm run build:esri-feature-layer & npm run build:esri-basemap-toggle"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "rollup": "^0.25.4",
+    "rollup-plugin-babel": "^2.4.0"
+  }
+}

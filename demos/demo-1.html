@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.0beta3/esri/css/main.css">
+    <style>
+      html, body, #map {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <esri-map
+      id="map"
+      basemap="dark-gray"
+      zoom="11"
+      lat="37.75"
+      lng="-122.33">
+    </esri-map>
+
+    <script src="https://js.arcgis.com/4.0beta2/"></script>
+    <script src="./dist/esri-map.js"></script>
+  </body>
+</html>
