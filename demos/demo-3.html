@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Map, Layer and Toggle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://js.arcgis.com/4.0beta3/esri/css/main.css">
     <style>
@@ -10,6 +11,21 @@
         margin: 0;
         display: block;
       }
+
+      #toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 100;
+      }
+
+      esri-basemap-toggle {
+        background: #FFF;
+        border-radius: 3px;
+        padding: .5em;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -17,7 +33,7 @@
       <esri-feature-layer url="http://services.arcgis.com/rOo16HdIMeOBI4Mb/arcgis/rest/services/Alternative_Fueling_Stations/FeatureServer/0" popuptitle="{Station_Na}" popupbody="popup"></esri-feature-layer>
     </esri-map>
 
-    <esri-basemap-toggle map="map"><esri-basemap-toggle>
+    <esri-basemap-toggle id="toggle" map="map" basemap="gray"></esri-basemap-toggle>
 
     <template id="popup">
       <p>{Street_Add}<br>
@@ -32,5 +48,6 @@
     <script src="https://js.arcgis.com/4.0beta3/"></script>
     <script src="./dist/esri-map.js"></script>
     <script src="./dist/esri-feature-layer.js"></script>
+    <script src="./dist/esri-basemap-toggle.js"></script>
   </body>
 </html>

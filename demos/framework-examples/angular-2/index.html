@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>Custom Elements - Angular 2 App</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.0beta3/esri/css/main.css">
+
+    <style>
+      html, body, esri-map {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 100;
+      }
+
+      esri-basemap-toggle {
+        background: #FFF;
+        border-radius: 3px;
+        padding: .5em;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <my-app></my-app>
+
+    <script src="https://code.angularjs.org/tools/system.js"></script>
+    <script src="https://code.angularjs.org/tools/typescript.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-alpha.44/angular2.dev.js"></script>
+    <script>
+      System.config({
+        transpiler: 'typescript',
+        typescriptOptions: { emitDecoratorMetadata: true }
+      });
+      System.import('./app.ts');
+    </script>
+
+    <script src="https://js.arcgis.com/4.0beta3/"></script>
+    <script src="../../dist/esri-map.js"></script>
+    <script src="../../dist/esri-feature-layer.js"></script>
+    <script src="../../dist/esri-basemap-toggle.js"></script>
+  </body>
+</html>

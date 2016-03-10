@@ -26,7 +26,14 @@ require([
         popupTemplate: this.template
       });
 
-      this.parentNode.map.add(this.layer);
+      if (this.parentNode.ready) {
+        this.parentNode.map.add(this.layer);
+      } else {
+        this.parentNode.addEventListener('mapready', () => {
+          this.parentNode.map.add(this.layer);
+        })
+      }
+
     }
 
     detachedCallback () {

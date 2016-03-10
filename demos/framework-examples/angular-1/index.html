@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <title>Custom Elements - Angular 1.x App</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.0beta3/esri/css/main.css">
+
+    <style>
+      html, body, esri-map {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 100;
+      }
+
+      esri-basemap-toggle {
+        background: #FFF;
+        border-radius: 3px;
+        padding: .5em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body ng-app="myApp">
+    <div ng-controller='MainController'>
+      <esri-map id="map" basemap="{{basemap}}" zoom="{{zoom}}" lat="{{lat}}" lng="{{lng}}">
+        <esri-feature-layer url="{{url}}" popuptitle="{Station_Na}" popupbody="popup"></esri-feature-layer>
+      </esri-map>
+
+      <esri-basemap-toggle
+        id="toggle"
+        map="map"
+        basemap="gray"
+        ontogglebasemap="logBasemapChange($event)"></esri-basemap-toggle>
+
+      <template id="popup">
+        <p>{Street_Add}<br>
+        {City}, {State}, {ZIP}</p>
+
+        <p><b>Fuel Type:</b> {Fuel_Type}</p>
+        <p><b>Phone:</b> <a href="tel:{Station_Ph}">{Station_Ph}</a></p>
+        <p><b>Open to:</b> {Groups_Wit}</p>
+        <p><b>Hours:</b> {Access_Day}</p>
+      </template>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="https://js.arcgis.com/4.0beta3/"></script>
+
+    <script>
+      var app = angular.module('myApp', []);
+
+      app.controller('MainController', function($scope) {
+        $scope.zoom = 11;
+        $scope.lat = 37.75;
+        $scope.lng = -122.33;
+        $scope.basemap = "topo";
+        $scope.url = "http://services.arcgis.com/rOo16HdIMeOBI4Mb/arcgis/rest/services/Alternative_Fueling_Stations/FeatureServer/0";
+        $scope.logBasemapChange = function(e){
+          console.log('Basemap Toggle in Angular:', e);
+        }
+      });
+
+      app.directive('ontogglebasemap', function($parse) {
+        return {
+          restrict: 'A',
+          compile: function($element, attr) {
+            var fn = $parse(attr.ontogglebasemap);
+            return function(scope, element, attr) {
+              element.on('togglebasemap', function(e) {
+                scope.$apply(function() {
+                  fn(scope, {
+                    $event: e
+                  });
+                });
+              });
+            };
+          }
+        };
+      });
+    </script>
+    <script src="../../dist/esri-map.js"></script>
+    <script src="../../dist/esri-feature-layer.js"></script>
+    <script src="../../dist/esri-basemap-toggle.js"></script>
+  </body>
+</html>

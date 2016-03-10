@@ -8,6 +8,9 @@ require([
 ], function (Map, MapView) {
 
   class EsriMapElement extends HTMLElement {
+
+    // createdCallback will be replaced by
+    // `constructor` in the newer spec
     createdCallback() {
       this._id = `esri-map-${ids++}`;
       this._container = createContainer(this._id);
@@ -26,26 +29,32 @@ require([
         map: this.map,
         center: this.center
       });
+
+      this.dispatchEvent(new CustomEvent('mapready'));
+
+      this.ready = true;
     }
 
     detachedCallback () {
-      console.log('detached');
+
     }
 
     attributeChangedCallback (name, oldValue, newValue) {
-      switch (name) {
-        case 'zoom':
-          this.view.zoom = this.zoom;
-          break;
-        case 'lat':
-          this.view.center = this.center;
-          break;
-        case 'lng':
-          this.view.center = this.center;
-          break;
-        case 'basemap':
-          this.map.basemap = this.basemap;
-          break;
+      if(this.view && this.map){
+        switch (name) {
+          case 'zoom':
+            this.view.zoom = this.zoom;
+            break;
+          case 'lat':
+            this.view.center = this.center;
+            break;
+          case 'lng':
+            this.view.center = this.center;
+            break;
+          case 'basemap':
+            this.map.basemap = this.basemap;
+            break;
+        }
       }
     }
 
@@ -96,5 +105,7 @@ require([
     return container;
   }
 
+  // document.registerElement becomes document.defineElement
+  // in the newer spec
   document.registerElement('esri-map', EsriMapElement);
 });

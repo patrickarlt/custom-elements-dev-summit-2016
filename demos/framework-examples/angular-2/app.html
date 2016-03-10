@@ -1,0 +1,20 @@
+<esri-map id="map" basemap="{{basemap}}" zoom="{{zoom}}" lat="{{lat}}" lng="{{lng}}">
+  <esri-feature-layer url="{{url}}" popuptitle="{Station_Na}" popupbody="popup"></esri-feature-layer>
+</esri-map>
+
+<esri-basemap-toggle
+  id="toggle"
+  map="map"
+  basemap="gray"
+  (togglebasemap)="toggled($event)"
+  ></esri-basemap-toggle>
+
+<template id="popup">
+  <p>{Street_Add}<br>
+  {City}, {State}, {ZIP}</p>
+
+  <p><b>Fuel Type:</b> {Fuel_Type}</p>
+  <p><b>Phone:</b> <a href="tel:{Station_Ph}">{Station_Ph}</a></p>
+  <p><b>Open to:</b> {Groups_Wit}</p>
+  <p><b>Hours:</b> {Access_Day}</p>
+</template>
