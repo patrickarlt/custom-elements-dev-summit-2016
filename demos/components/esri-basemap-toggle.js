@@ -4,6 +4,7 @@ import '../utils/CustomEvent.js';
 require([
   'esri/widgets/BasemapToggle/BasemapToggleViewModel'
 ], function (BasemapToggleViewModel) {
+
   class EsriBasemapToggleElement extends HTMLElement {
     createdCallback() {
       this.insertAdjacentHTML('afterbegin', `
