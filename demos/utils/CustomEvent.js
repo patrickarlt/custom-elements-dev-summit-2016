@@ -1,4 +1,4 @@
-// Polyfill for creating CustomEvents on IE9/10/11
+// Polyfill for window.CustomEvent for IE9/10/11
 
 // code pulled from:
 // https://github.com/d4tocchini/customevent-polyfill
@@ -21,5 +21,5 @@ try {
   };
 
   CustomEvent.prototype = window.Event.prototype;
-  window.CustomEvent; // expose definition to window
+  window.CustomEvent = CustomEvent; // expose definition to window
 }

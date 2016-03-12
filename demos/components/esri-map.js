@@ -1,3 +1,4 @@
+import '../utils/CustomEvent.js';
 import HTMLElement from '../utils/HTMLElement.js';
 
 var ids = 0;
@@ -37,14 +38,17 @@ require([
         center: this.center
       });
 
-      this.dispatchEvent(new CustomEvent('mapready'));
+      this.dispatchEvent(new CustomEvent('mapready', {
+        bubbles: true
+      }));
 
       this.ready = true;
     }
 
     detachedCallback () {
-      // JS API 4.0 doesn't provide a good way of destroying
-      // a map after it has been created.
+      // JS API 4.0 doesn't provide a way of destroying
+      // a map after it has been created like in 3.x
+      // but you should do it here.
     }
 
     attributeChangedCallback (name, oldValue, newValue) {
@@ -118,6 +122,6 @@ require([
   }
 
   // document.registerElement becomes document.defineElement
-  // in the newer spec. 
+  // in the newer spec.
   document.registerElement('esri-map', EsriMapElement);
 });

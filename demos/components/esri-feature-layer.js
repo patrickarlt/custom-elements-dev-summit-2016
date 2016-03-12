@@ -43,13 +43,13 @@ require([
     attributeChangedCallback () {
       switch (name) {
         case 'popuptitle':
-          // could potentially set popup title here
+          // could set popup title here
           break;
         case 'popupbody':
-          // could potentially set popup body here
+          // could set popup body here
           break;
         case 'url':
-          // should we allow changing the url of the feature layer here?
+          // should we allow changing the url?
           break;
       }
     }

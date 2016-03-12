@@ -13,7 +13,6 @@
       }
 
       #toggle {
-        display: block;
         position: absolute;
         top: 10px;
         right: 10px;
@@ -21,19 +20,32 @@
       }
 
       esri-basemap-toggle {
+        display: block;
         background: #FFF;
         border-radius: 3px;
-        padding: .5em;
+        padding: 0.5em;
         text-align: center;
       }
     </style>
   </head>
   <body>
-    <esri-map id="map" basemap="dark-gray" zoom="11" lat="37.75" lng="-122.33">
-      <esri-feature-layer url="http://services.arcgis.com/rOo16HdIMeOBI4Mb/arcgis/rest/services/Alternative_Fueling_Stations/FeatureServer/0" popuptitle="{Station_Na}" popupbody="popup"></esri-feature-layer>
+    <esri-map
+      id="map"
+      basemap="dark-gray"
+      zoom="11"
+      lat="37.75"
+      lng="-122.33">
+
+      <esri-feature-layer
+        url="http://services.arcgis.com/rOo16HdIMeOBI4Mb/arcgis/rest/services/Alternative_Fueling_Stations/FeatureServer/0"
+        popuptitle="{Station_Na}"
+        popupbody="popup"></esri-feature-layer>
     </esri-map>
 
-    <esri-basemap-toggle id="toggle" map="map" basemap="gray"></esri-basemap-toggle>
+    <esri-basemap-toggle
+      id="toggle"
+      map="map"
+      basemap="gray"></esri-basemap-toggle>
 
     <template id="popup">
       <p>{Street_Add}<br>

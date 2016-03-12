@@ -1,5 +1,5 @@
-import HTMLElement from '../utils/HTMLElement.js';
 import '../utils/CustomEvent.js';
+import HTMLElement from '../utils/HTMLElement.js';
 
 require([
   'esri/widgets/BasemapToggle/BasemapToggleViewModel'
