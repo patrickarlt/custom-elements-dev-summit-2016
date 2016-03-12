@@ -18,6 +18,7 @@ require([
 
     attachedCallback () {
       this._mapElement = document.getElementById(this.getAttribute('map'));
+
       this.addEventListener('click', this.handleClick);
 
       if (this._mapElement.ready) {
@@ -61,7 +62,7 @@ require([
       this.update();
     }
 
-    update (quiet) {
+    update () {
       var info = this.viewModel.getBasemapInfo();
       this.text.textContent = info.title;
       this.image.src = info.thumbnailUrl;

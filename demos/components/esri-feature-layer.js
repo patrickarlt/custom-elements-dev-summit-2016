@@ -37,14 +37,19 @@ require([
     }
 
     detachedCallback () {
-      console.log('detachedCallback', this);
+      this.parentNode.map.remove(this.layer);
     }
 
     attributeChangedCallback () {
       switch (name) {
         case 'popuptitle':
+          // could potentially set popup title here
           break;
         case 'popupbody':
+          // could potentially set popup body here
+          break;
+        case 'url':
+          // should we allow changing the url of the feature layer here?
           break;
       }
     }
@@ -75,5 +80,4 @@ require([
   }
 
   document.registerElement('esri-feature-layer', EsriFeatureLayerElement);
-
 });

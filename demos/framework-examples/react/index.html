@@ -50,14 +50,14 @@
         },
 
         componentDidMount: function() {
-          this.refs.basemapToggle.addEventListener('togglebasemap', this.rated);
+          this.refs.basemapToggle.addEventListener('togglebasemap', this.basemapToggle);
         },
 
         componentWillUnmount: function() {
-          this.refs.basemapToggle.removeEventListener('togglebasemap', this.rated);
+          this.refs.basemapToggle.removeEventListener('togglebasemap', this.basemapToggle);
         },
 
-        rated: function(e) {
+        basemapToggle: function(e) {
           console.log('Basemap toggle in React:', e);
         },
 

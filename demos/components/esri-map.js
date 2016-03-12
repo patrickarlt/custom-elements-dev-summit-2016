@@ -10,7 +10,14 @@ require([
   class EsriMapElement extends HTMLElement {
 
     // createdCallback will be replaced by
-    // `constructor` in the newer spec
+    // `constructor` in the newer spec so this
+    // will look like
+    //
+    // constructor () {
+    //   super(); // must be called first
+    // }
+    //
+    // in the new spec
     createdCallback() {
       this._id = `esri-map-${ids++}`;
       this._container = createContainer(this._id);
@@ -36,10 +43,15 @@ require([
     }
 
     detachedCallback () {
-
+      // JS API 4.0 doesn't provide a good way of destroying
+      // a map after it has been created.
     }
 
     attributeChangedCallback (name, oldValue, newValue) {
+      // some frameworks will set attributes as `undefined`
+      // when they are first initalized. So make sure you
+      //  handle that case. In this case we make sure we have
+      //  a map and view.
       if(this.view && this.map){
         switch (name) {
           case 'zoom':
@@ -106,6 +118,6 @@ require([
   }
 
   // document.registerElement becomes document.defineElement
-  // in the newer spec
+  // in the newer spec. 
   document.registerElement('esri-map', EsriMapElement);
 });
