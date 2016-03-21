@@ -1,0 +1,1 @@
+To get our custom elements working in React you must use a `ref` https://facebook.github.io/react/docs/more-about-refs.html to add and remove event listeners. It is also worth noting that the Dojo and JSX syntaxes for interpolation are the same so to have React render `{Name}` you must do `{'{Name}'}`.

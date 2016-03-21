@@ -1,0 +1,1 @@
+In Ember all custom elements should be wrapped inside an Ember component. Then just insert the custom elements into that components template. To listen to events on custom elements you must add the event name to the `customEvents` option on your app. Then you will be able to listen for events on your wrapping component with the corresponding method name.

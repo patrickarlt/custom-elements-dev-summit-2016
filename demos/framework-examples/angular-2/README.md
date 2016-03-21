@@ -1,0 +1,1 @@
+Custom elements work completely out of the box with the Angular 2  template and binding system.

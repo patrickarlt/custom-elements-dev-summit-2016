@@ -1,0 +1,1 @@
+Custom elements in Backbone work exactly like normal elements. Just render your template and attach your events like normal. It is probably best however to avoid rebuilding the entire DOM subtree with methods like `this.$el.html` and instead updat the DOM programmatically to avoid creating the custom elements many times.

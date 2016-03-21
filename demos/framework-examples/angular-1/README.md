@@ -1,0 +1,1 @@
+Attribute binding in Angular 1 works out the box. Just add Custom elements and Angular's existing template syntax will work out of the box. Events require a custom directive based on `ng-click` is needed for each event you want to listen too. https://github.com/patrickarlt/custom-elements-dev-summit-2016/blob/gh-pages/demos/framework-examples/angular-1/index.html#L70-L86
